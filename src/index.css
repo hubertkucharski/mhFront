@@ -1,13 +1,105 @@
-body {
+@font-face {
+  /*font-family: 'Gumela';*/
+  /*src: local('Gumela'), url('../src/fonts/Gumela Regular.otf');*/
+}
+*{
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+body {
+  /*font-family: Gumela, serif;*/
+  font-weight: normal;
+  font-size: 20px;
+  background: var(--color-bg);
+  color: #fff;
+  line-height: 1.7;
+  background-image: url("img/bg-texture.png");
+}
+.container{
+  width: var(--container-width-lg);
+  margin: 0 auto;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+h1,
+h2,
+h3,
+h4,
+h5{
+  font-weight: 500;
+}
+h1{
+  font-size: 2.5rem;
+}
+h5{
+  color: var(--color-light);
+}
+section{
+  margin-top: 8rem;
+}
+section > h2, section > h5{
+  text-align: center;
+  color: var(--color-light);
+}
+
+section > h2{
+  color: var(--color-primary);
+  margin-bottom: 3rem;
+}
+
+.text-ligth{
+  color: var(--color-light);
+}
+
+a{
+  color: var(--color-primary);
+  transition: var(--transition);
+}
+a:hover{
+  color: #fff;
+}
+.btn{
+  width: max-content;
+  display: inline-block;
+  color: var(--color-primary);
+  padding: 0.75rem 1.2rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  border: 1px solid var(--color-primary);
+  transition: var(--transition);
+}
+.btn:hover{
+  background: #fff;
+  color: var(--color-bg);
+  border-color: transparent;
+}
+.btn-primary{
+  background: var(--color-primary);
+  color: var(--color-bg);
+}
+img{
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 1024px) {
+  .container{
+    width: var(--container-width-md);
+  }
+  section{
+    margin-top: 6rem;
+  }
+}
+@media screen and (max-width: 600px) {
+  .container {
+    width: var(--container-width-sm);
+  }
+  section{
+    margin-top: 2rem;
+  }
 }
