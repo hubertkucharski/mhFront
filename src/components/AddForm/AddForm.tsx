@@ -4,6 +4,7 @@ import {SimpleGameEntity} from "../../types/game-entity";
 
 import './AddForm.css';
 import {SingleGame} from "../SingleGame/SingleGame";
+import {Btn} from "../common/Btn/Btn";
 
 export const AddForm = () =>{
 
@@ -42,13 +43,23 @@ useEffect(()=>{
     return (
         <>
             <section id='contact'>
+                <Btn to='/my-collection'  text='Show my collection' />
                 <h5>You can add new game to your collection</h5>
                 <h2>English names</h2>
 
                 <div className="container contact__container">
 
                     <form onSubmit={sendForm}>
-                        <input type="text" name='gameName' placeholder='Name of the game' onChange={event => event.target.value.length>2 ? setGameName(event.target.value) : ''} required/>
+                        <input
+                            type="text"
+                            name='gameName'
+                            placeholder='Name of the game'
+                            onChange={
+                            event => event.target.value.length>2 ?
+                                setGameName(event.target.value) :
+                                ''}
+                            required/>
+                        {!gameName ? <small>Write at least 3 characters.</small> : ''}
 
 
                     </form>
@@ -60,11 +71,9 @@ useEffect(()=>{
                                 {(game.gameName)}
                             </a>
                                 {game.gameId === selectedGameId ? (
-                                    <p>
                                         <SingleGame gameId={game.gameId} />
-                                        {/*{game.gameId}*/}
-                                    </p>
-                                ) : ''}
+                                    ) : ''}
+                            {/*{game.gameId}*/}
 
 
                         </li>

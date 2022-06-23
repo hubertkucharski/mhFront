@@ -24,7 +24,6 @@ export const GamesList = () =>{
                             <li key={game.gameId}>
                                 {game.gameName}
                                     {/*<SingleAd id={ad.id}/>*/}
-1
                             </li>
                         )
                     )
