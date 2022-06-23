@@ -1,0 +1,13 @@
+img{
+    width: 150px;
+}
+.mini_single_game_view{
+    margin: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+}
+button, h3{
+    margin: 20px;
+}
+

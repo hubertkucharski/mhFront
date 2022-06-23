@@ -11,7 +11,7 @@ function App() {
       <Routes>
         <Route path='/' element={<AddForm/>} />
         <Route path='/games-list' element={<GamesList/>} />
-        <Route path='/single-game' element={<SingleGame/>} />
+        <Route path='/single-game' element={<SingleGame gameId={''}/>} />
       </Routes>
   );
 }

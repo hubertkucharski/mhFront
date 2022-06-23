@@ -1,6 +1,6 @@
 @font-face {
-  /*font-family: 'Gumela';*/
-  /*src: local('Gumela'), url('../src/fonts/Gumela Regular.otf');*/
+  font-family: 'Gumela';
+  src: local('Gumela'), url('../src/fonts/Gumela Regular.otf');
 }
 *{
   margin: 0;
@@ -12,7 +12,7 @@
   text-decoration: none;
 }
 body {
-  /*font-family: Gumela, serif;*/
+  font-family: Gumela, serif;
   font-weight: normal;
   font-size: 20px;
   background: var(--color-bg);

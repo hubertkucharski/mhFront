@@ -26,8 +26,8 @@ useEffect(()=>{
         e.preventDefault();
     }
 
-    const showDetails = (name: string) :void  => {
-        console.log(name)
+    const showDetails = (gameId: string) :void  => {
+        selectedGameId !== gameId ? setSelectedGameId(gameId) : setSelectedGameId('');
     }
 
     if (isSend === 200) {
@@ -50,19 +50,23 @@ useEffect(()=>{
                     <form onSubmit={sendForm}>
                         <input type="text" name='gameName' placeholder='Name of the game' onChange={event => event.target.value.length>2 ? setGameName(event.target.value) : ''} required/>
 
-                        <button type='submit' className='btn btn-primary'>Add game</button>
+
                     </form>
                 </div>
                 <ul>
                     {games.map(game=>(
                         <li key={game.gameId}>
-                            <a href="#" onClick={()=> setSelectedGameId(game.gameId)}>
-                                {game.gameId === selectedGameId ? game.gameId : game.gameName}
+                            <a href="#" onClick={(e)=> {e.preventDefault(); showDetails(game.gameId)}}>
+                                {(game.gameName)}
                             </a>
+                                {game.gameId === selectedGameId ? (
+                                    <p>
+                                        <SingleGame gameId={game.gameId} />
+                                        {/*{game.gameId}*/}
+                                    </p>
+                                ) : ''}
 
-                            <p>
-                                details
-                            </p>
+
                         </li>
                     ))}
                 </ul>
