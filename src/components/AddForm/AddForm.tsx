@@ -1,18 +1,23 @@
-import { useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {apiUrl} from "../../config/apiUrl";
 import {SimpleGameEntity} from "../../types/game-entity";
+import {SingleGame} from "../SingleGame/SingleGame";
+import {UserIdContext} from '../FindeGames/FindeGames';
 
 import './AddForm.css';
-import {SingleGame} from "../SingleGame/SingleGame";
-import {Btn} from "../common/Btn/Btn";
 
 export const AddForm = () =>{
+    const context = useContext(UserIdContext)
 
     const [games, setGames] = useState<SimpleGameEntity[]>([])
     const [gameName, setGameName] = useState<undefined | string>(undefined);
     const [selectedGameId, setSelectedGameId] = useState('');
 
-useEffect(()=>{
+    // const { userId } = useParams();
+
+    const { selectedUserId } = context;
+
+    useEffect(()=>{
     (async()=>{
         const res = await fetch(`${apiUrl}/api/mh/search/${gameName}`)
         const data = await res.json();
@@ -21,7 +26,7 @@ useEffect(()=>{
     })()
 },[gameName])
 
-        const [isSend, setIsSend] = useState<number>(100);
+        const [ isSend, setIsSend ] = useState<number>(100);
 
     const sendForm = (e: any) => {
         e.preventDefault();
@@ -38,14 +43,14 @@ useEffect(()=>{
                 <h5>Your collection is beautiful.</h5>
             </section>
         )
-
     }
+
     return (
         <>
             <section id='contact'>
-                <Btn to='/my-collection'  text='Show my collection' />
-                <h5>You can add new game to your collection</h5>
-                <h2>English names</h2>
+
+                <h2>You can add new game to your collection</h2>
+                <h5>English names only (for example: catan, scrabble)</h5>
 
                 <div className="container contact__container">
 
@@ -59,8 +64,7 @@ useEffect(()=>{
                                 setGameName(event.target.value) :
                                 ''}
                             required/>
-                        {!gameName ? <small>Write at least 3 characters.</small> : ''}
-
+                        {!gameName ? <h5>Write at least 3 characters.</h5> : ''}
 
                     </form>
                 </div>
@@ -71,11 +75,9 @@ useEffect(()=>{
                                 {(game.gameName)}
                             </a>
                                 {game.gameId === selectedGameId ? (
-                                        <SingleGame gameId={game.gameId} />
+                                        // <SingleGame gameId={game.gameId} userId={props.selectedUserId}/>
+                                        <SingleGame gameId={game.gameId} userId={selectedUserId}/>
                                     ) : ''}
-                            {/*{game.gameId}*/}
-
-
                         </li>
                     ))}
                 </ul>

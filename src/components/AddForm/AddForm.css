@@ -30,7 +30,6 @@
     display: inline-block;
     font-size: 0.8rem;
 }
-
 form{
     display: flex;
     flex-direction: column;
@@ -44,6 +43,7 @@ input, textarea{
     border: 2px solid var(--color-primary-variant);
     resize: none;
     color: #fff;
+    margin-top: 2rem;
 }
 ul{
     padding-top: 1.5rem;

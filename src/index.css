@@ -39,7 +39,7 @@ h5{
   color: var(--color-light);
 }
 section{
-  margin-top: 8rem;
+  margin-top: 4rem;
 }
 section > h2, section > h5{
   text-align: center;

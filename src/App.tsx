@@ -1,19 +1,20 @@
 import React from 'react';
 import {Route, Routes} from "react-router-dom";
-import {AddForm} from "./components/AddForm/AddForm";
 import {GamesList} from "./components/GamesList/GamesList";
 import {SingleGame} from "./components/SingleGame/SingleGame";
 import {MyCollection} from "./components/MyCollection/MyCollection";
+import {FindeGames} from "./components/FindeGames/FindeGames";
 
 import './App.css';
 
 function App() {
   return (
       <Routes>
-        <Route path='/' element={<AddForm/>} />
+        <Route path='/' element={<FindeGames/>} />
         <Route path='/games-list' element={<GamesList/>} />
-        <Route path='/single-game' element={<SingleGame gameId={''}/>} />
-          <Route path='/my-collection' element={<MyCollection userId='7a9f761e-f155-11ec-b862-3ecfab8190d4'/>}/>
+        <Route path='/single-game' element={<SingleGame gameId={''} userId={''}/>} />
+        <Route path='/my-collection/:userId' element={<MyCollection/>}/>
+
       </Routes>
   );
 }
