@@ -14,6 +14,7 @@ export const SingleGame =(props: Props) =>{
     const [id, setId] = useState('');
     const [isUserId, setIsUserId] = useState<boolean | null>(null);
     const [loading, setLoading] = useState(false)
+
     const addGame = async (e: SyntheticEvent) =>{
         e.preventDefault();
         if(props.userId === '') {
@@ -32,7 +33,8 @@ export const SingleGame =(props: Props) =>{
                 );
                 const data = await res.json();
 
-                setId(data.collectionId)
+                setId(data.collectionId);
+
             } finally {
                 setLoading(false)
             }
@@ -51,15 +53,23 @@ export const SingleGame =(props: Props) =>{
     if(gameDetails === null || loading){
         return <p>Loading data..</p>
     }
+
     if(id){
         return (
             <>
                 <h2>Game {gameDetails.gameName} has been added to your collection.</h2>
             </>)
     }
+    if(id === undefined){
+        return (
+            <>
+                <h2>You already have {gameDetails.gameName} in your collection.</h2>
+            </>)
+    }
+
     const showInfo = () => {
         setTimeout(()=>setIsUserId(null),2000)
-        return 'Please, log in.'
+        return 'Please, log in (select user on top).'
     }
     return(
         <div className='mini_single_game_view'>
@@ -68,7 +78,14 @@ export const SingleGame =(props: Props) =>{
                 <p>
                 Published in: {`${gameDetails.yearPublished}`}
             </p>
-            <button type='submit' className='btn btn-primary' onClick={addGame}>Add game to yours collection</button>
+                {props.userId === '                 --- Select user ---'
+                    ? showInfo()
+                    : <button
+                        type='submit'
+                        className='btn btn-primary'
+                        onClick={addGame}>
+                        Add game to yours collection
+                </button> }
                 <p>{isUserId === false ? showInfo() : ''}</p>
             </h3>
         </div>
