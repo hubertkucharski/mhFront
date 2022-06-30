@@ -5,19 +5,22 @@ import {UserIdContext} from "../FindeGames/FindeGames";
 
 export const MyCollection = () =>{
 
-    const [userCollection, setUserCollection] = useState<{gameId: string, userId: string}[]>([])
+    const [userCollection, setUserCollection] = useState<{gameId: string, userId: string}[]>([]);
 
     const  context = useContext(UserIdContext)
     const { selectedUserId } = context;
 
-    useEffect(()=>{
-        (async ()=>{
-            const res = await fetch(`${apiUrl}/api/mh/my-collection/${selectedUserId}`)
-            const data = await res.json();
+    const refreshList = async () =>{
+        setUserCollection([]);
+        const res = await fetch(`${apiUrl}/api/mh/my-collection/${selectedUserId}`);
+        const data = await res.json();
 
-            setUserCollection(data);
-        })()
-    },[selectedUserId])
+        setUserCollection(data);
+    }
+
+    useEffect(()=> {
+        refreshList();
+    },[selectedUserId]);
 
     if(selectedUserId !== ''){
 
@@ -29,7 +32,7 @@ export const MyCollection = () =>{
             <ul>
                 {userCollection.map((game)=>(
                     <li key={game.gameId}>
-                        <UserGameCollection gameId={game.gameId}/>
+                        <UserGameCollection gameId={game.gameId} userId={game.userId} onCollectionChange={refreshList}/>
                     </li>
                 )
             )}
