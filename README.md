@@ -14,7 +14,7 @@ Database has beed downloaded from boardgamegeek.com.
 #### - add games to private collections
 #### - select game from private collection that you want to exchange
 #### - from all games that people want swap decide what you want for it (exchange one game for another)
-#### - if it is match send confirmation mail to both users
+#### - if it is a match send confirmation mail to both users
 
 # Tech
 ## FE:
@@ -26,7 +26,7 @@ Database has beed downloaded from boardgamegeek.com.
 # Ready
 ### Live search from downloaded database
 ### Select user ID from mySQL
-### Relation in database - only users from lilst can add games
+### Relation in database - only users from list can add games
 ###  
 
 # Not ready
