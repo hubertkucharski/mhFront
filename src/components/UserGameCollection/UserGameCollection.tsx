@@ -65,7 +65,9 @@ export const UserGameCollection = (props: Props) =>{
     return(
         <>
             <h3>
-                {gamesName?.gameName}
+                <a href={`https://boardgamegeek.com/boardgame/${props.gameId}`} target="_git" rel="noreferrer">
+                    {gamesName?.gameName}
+                </a>
             <button
                 className='btn btn-primary'
                 // onClick={handleDelete}>
