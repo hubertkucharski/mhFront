@@ -13,8 +13,6 @@ export const AddForm = () =>{
     const [gameName, setGameName] = useState<undefined | string>(undefined);
     const [selectedGameId, setSelectedGameId] = useState('');
 
-    // const { userId } = useParams();
-
     const { selectedUserId } = context;
 
     useEffect(()=>{

@@ -1,4 +1,4 @@
-import {apiUrl} from "../../config/apiUrl";
+import {apiUrl, bggApiUrl} from "../../config/apiUrl";
 import {SyntheticEvent, useEffect, useState} from "react";
 import {GameEntity} from "../../types/game-entity";
 import './SingleGame.css';
@@ -44,7 +44,12 @@ export const SingleGame =(props: Props) =>{
         useEffect(()=>{
             (async()=>{
                 const res = await fetch(`${apiUrl}/api/mh/${props.gameId}`)
-                const data = await res.json();
+                const dataImage = await res.json();
+
+                //fetch for image
+                const resBgg = await fetch(`${bggApiUrl}/${props.gameId}`)
+                const {thumbnail} = await resBgg.json()
+                const data = {...dataImage, thumbnail}
 
                 setGameDetails(data)
             })()
