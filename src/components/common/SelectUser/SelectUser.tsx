@@ -1,27 +1,27 @@
-// import {Btn} from "../common/Btn/Btn";
 import {useEffect, useState} from "react";
 import {apiUrl} from "../../../config/apiUrl";
 
-interface Props{
+interface Props {
     userId: string
 }
-export const MyCollection = (props: Props) =>{
 
-    const [allUsers, setAllUsers] = useState<{userId: string}[]>([])
+export const MyCollection = (props: Props) => {
 
-    useEffect(()=>{
-        (async ()=>{
+    const [allUsers, setAllUsers] = useState<{ userId: string }[]>([])
+
+    useEffect(() => {
+        (async () => {
             const res = await fetch(`${apiUrl}/api/mh/my-collection/${props.userId}`)
             const data = await res.json();
-            console.log(data)
+
             setAllUsers(data);
         })()
-    },[])
+    }, [])
 
-    return(
+    return (
         <>
             <select name="users" id="users">
-                {allUsers.map(user=>(
+                {allUsers.map(user => (
                     <option key={user.userId}>
                         {user.userId}
                     </option>)
