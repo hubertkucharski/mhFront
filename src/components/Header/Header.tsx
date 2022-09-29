@@ -1,27 +1,57 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {MyCollection} from "../MyCollection/MyCollection";
 import {AddForm} from "../AddForm/AddForm";
 import './Header.css'
+import {validateCurrUserAsync} from "../../redux/features/userSlice";
+import {useAppDispatch, useAppSelector} from "../../redux/app/hooks";
+import {Link} from "react-router-dom";
 
 export const Header = () => {
 
+    const dispatch = useAppDispatch();
     const [isShown, setIsShown] = useState('AddForm');
+    const userState = useAppSelector((state) => (state.user.user));
+
+    useEffect(() => {
+        dispatch(validateCurrUserAsync());
+    }, []);
+
+    const logOut = async () => {
+        const res = await fetch('http://localhost:3001/auth/logout', {
+            credentials: 'include',
+        });
+        const resJson = await res.json();
+        if (resJson.message === 'Wylogowano') {
+            await dispatch(validateCurrUserAsync());
+        }
+    };
 
     return (
         <>
             <h1>Place where you can exchange games</h1>
             <div className='container contact__container'>
                 <button type='button' className='btn btn-primary' onClick={
-                    ()=>setIsShown('AddForm')}>
+                    () => setIsShown('AddForm')}>
                     Add games to collection
                 </button>
                 <button type='button' className='btn btn-primary' onClick={
-                    ()=>setIsShown('MyCollection')}>
+                    () => setIsShown('MyCollection')}>
                     Show my collection
                 </button>
+                {!userState ?
+                    <Link to='/login'>
+                        <button type='button' className='btn btn-primary'>
+                            Login
+                        </button>
+                    </Link>
+                    :
+                    <button type='button' className='btn btn-primary' onClick={logOut}>
+                        Logout
+                    </button>
+                }
             </div>
-            {isShown === 'AddForm' && <AddForm />}
-            {isShown === 'MyCollection' && <MyCollection />}
+            {isShown === 'AddForm' && <AddForm/>}
+            {isShown === 'MyCollection' && <MyCollection/>}
         </>
     );
 }

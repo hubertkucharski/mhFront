@@ -14,7 +14,7 @@ export const SelectUser = ({handleUserChange}: Props) =>{
     useEffect(()=>{
         // pobiera userId wszystkich użytkowników
         (async ()=>{
-            const res = await fetch(`${apiUrl}/api/mh/my-collection/`);
+            const res = await fetch(`${apiUrl}/user/`);
             const data = await res.json();
 
             setUsers(data);
