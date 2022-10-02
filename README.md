@@ -20,7 +20,7 @@ Database has beed downloaded from boardgamegeek.com.
 ## FE:
 ### React
 ## BE: 
-### Express
+### NestJS
 ### MySQL
 
 # Ready
