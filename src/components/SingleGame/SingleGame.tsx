@@ -11,7 +11,7 @@ interface Props {
 export const SingleGame = (props: Props) => {
 
     const [gameDetails, setGameDetails] = useState<GameEntity | null>(null)
-    const [id, setId] = useState('');
+    const [id, setId] = useState<number>(0);
     const [isUserId, setIsUserId] = useState<boolean | null>(null);
     const [loading, setLoading] = useState(false)
 
@@ -23,7 +23,7 @@ export const SingleGame = (props: Props) => {
             try {
                 setLoading(true)
                 setIsUserId(true)
-                const res = await fetch(`${apiUrl}/api/mh`, {
+                const res = await fetch(`${apiUrl}/collection/add`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -33,7 +33,7 @@ export const SingleGame = (props: Props) => {
                 );
                 const data = await res.json();
 
-                setId(data.collectionId);
+                setId(data.statusCode);
 
             } finally {
                 setLoading(false)
@@ -60,16 +60,22 @@ export const SingleGame = (props: Props) => {
         return <p>Loading data..</p>
     }
 
-    if (id) {
+    if (id === 200) {
         return (
             <>
                 <h2>Game {gameDetails.gameName} has been added to your collection.</h2>
             </>)
     }
-    if (id === undefined) {
+    if (id === 201) {
         return (
             <>
                 <h2>You already have {gameDetails.gameName} in your collection.</h2>
+            </>)
+    }
+    if (id === 401) {
+        return (
+            <>
+                <h2>Wrong data.</h2>
             </>)
     }
 
