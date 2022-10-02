@@ -19,7 +19,6 @@ function App() {
         <Route path='/games-list' element={<GamesList/>} />
         <Route path='/single-game' element={<SingleGame gameId={''} userId={''}/>} />
         <Route path='/my-collection/:userId' element={<MyCollection/>}/>
-
       </Routes>
   );
 }

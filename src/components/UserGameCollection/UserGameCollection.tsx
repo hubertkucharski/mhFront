@@ -5,6 +5,7 @@ import {ShowInfo} from "../common/ShowInfo/ShowInfo";
 
 interface Props{
     gameId: string,
+    gameBggId: string,
     userId: string,
     onCollectionChange: ()=> void
 }
@@ -17,7 +18,7 @@ export const UserGameCollection = (props: Props) =>{
     useEffect(()=>{
         (async ()=>{
 
-            const res = await fetch(`${apiUrl}/api/mh/${props.gameId}`);
+            const res = await fetch(`${apiUrl}/bgg-games/find-by-id/${props.gameId}`);
             const data = await res.json();
 
             setGamesName(data);
@@ -65,12 +66,11 @@ export const UserGameCollection = (props: Props) =>{
     return(
         <>
             <h3>
-                <a href={`https://boardgamegeek.com/boardgame/${props.gameId}`} target="_git" rel="noreferrer">
+                <a href={`https://boardgamegeek.com/boardgame/${props.gameBggId}`} target="_git" rel="noreferrer">
                     {gamesName?.gameName}
                 </a>
             <button
                 className='btn btn-primary'
-                // onClick={handleDelete}>
                 onClick={handleDelete}>
                 Delete game from collection
             </button>
