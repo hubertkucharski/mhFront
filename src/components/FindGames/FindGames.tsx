@@ -17,7 +17,6 @@ export const FindGames = () => {
 
     useEffect(() => {
         !currUser ? handleUserChange('') : handleUserChange(currUser.userId)
-        console.log(selectedUserId, 'selectedUserId')
     }, [currUser]);
 
 
