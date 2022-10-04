@@ -37,7 +37,7 @@ import {useFormik} from "formik";
 //   );
 // }
 
-const theme = createTheme();
+const theme = createTheme({palette: { mode: 'dark' }});
 
 const validationSchema = yup.object({
   email: yup
