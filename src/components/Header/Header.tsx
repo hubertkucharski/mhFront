@@ -28,7 +28,7 @@ export const Header = () => {
 
     return (
         <>
-            <h1>Place where you can exchange games</h1>
+            <h1>Place where you can exchange board games</h1>
             <div className='container contact__container'>
                 <button type='button' className='btn btn-primary' onClick={
                     () => setIsShown('AddForm')}>
