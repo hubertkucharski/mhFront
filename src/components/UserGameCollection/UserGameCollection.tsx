@@ -32,6 +32,7 @@ export const UserGameCollection = (props: Props) => {
             headers: {
                 'Content-Type': 'application/json',
             },
+            credentials: 'include',
             body: JSON.stringify({gameId: props.gameId, userId: props.userId})
         });
         setDeleteGame(true)

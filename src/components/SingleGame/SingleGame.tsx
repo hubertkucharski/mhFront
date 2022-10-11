@@ -28,7 +28,8 @@ export const SingleGame = (props: Props) => {
                         headers: {
                             'Content-Type': 'application/json',
                         },
-                        body: JSON.stringify({gameId: gameDetails?.gameId, userId: props.userId})
+                        credentials: 'include',
+                        body: JSON.stringify({gameId: gameDetails?.gameId})
                     }
                 );
                 const data = await res.json();
