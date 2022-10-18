@@ -23,6 +23,7 @@ export const Header = () => {
         const resJson = await res.json();
         if (resJson.message === 'Wylogowano') {
             await dispatch(validateCurrUserAsync());
+            window.location.reload();
         }
     };
 
