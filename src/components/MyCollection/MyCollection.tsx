@@ -11,11 +11,13 @@ export const MyCollection = () => {
     const {selectedUserId} = context;
 
     const refreshList = async () =>{
-        setUserCollection([]);
+        if (!selectedUserId){
+            return setUserCollection([])
+        }
         const res = await fetch(`${apiUrl}/collection/${selectedUserId}`);
         const data = await res.json();
 
-        setUserCollection(data[0].gameId);
+        setUserCollection(data[0].gameId)
     }
 
     useEffect(() => {
