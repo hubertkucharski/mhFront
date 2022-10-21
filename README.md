@@ -20,17 +20,16 @@ Database has beed downloaded from boardgamegeek.com.
 ## FE:
 ### React
 ## BE: 
-### Express
+### Express (currently migrating to NestJS)
 ### MySQL
 
 # Ready
 ### Live search from downloaded database
 ### Select user ID from mySQL
 ### Relation in database - only users from list can add games
-###  
-
-# Not ready
 ### authorisation & authentication 
 ### adding new users
+
+# Not ready
 ### ManyToMany relation between multiple games
 ### algorithm (such as used by TradeMaximizer) to decide who should send their game to whom
