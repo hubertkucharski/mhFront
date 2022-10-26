@@ -3,6 +3,7 @@
 # dependencies
 /node_modules
 /.pnp
+/src/config/config.ts
 .pnp.js
 .env
 
