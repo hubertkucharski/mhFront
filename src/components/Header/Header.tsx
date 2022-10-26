@@ -5,6 +5,7 @@ import './Header.css'
 import {validateCurrUserAsync} from "../../redux/features/userSlice";
 import {useAppDispatch, useAppSelector} from "../../redux/app/hooks";
 import {Link} from "react-router-dom";
+import {apiUrl} from "../../config/apiUrl";
 
 export const Header = () => {
 
@@ -17,7 +18,7 @@ export const Header = () => {
     }, []);
 
     const logOut = async () => {
-        const res = await fetch('http://localhost:3001/auth/logout', {
+        const res = await fetch(`${apiUrl}`, {
             credentials: 'include',
         });
         const resJson = await res.json();

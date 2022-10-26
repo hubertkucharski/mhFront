@@ -82,7 +82,7 @@ export const SingleGame = (props: Props) => {
 
     const showInfo = () => {
         setTimeout(() => setIsUserId(null), 2000)
-        return 'Please, log in (select user on top).'
+        return 'Please, log in first.'
     }
     return (
         <div className='mini_single_game_view'>

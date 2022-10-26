@@ -1,11 +1,12 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import {User} from '../../../../week8.project.mh.back/src/user/user.entity';
+import {apiUrl} from "../../config/apiUrl";
 
 export const validateCurrUserAsync = createAsyncThunk(
     'user/validate',
     async () => {
         try {
-        const res = await fetch('http://localhost:3001/auth/check-user', {
+        const res = await fetch(`${apiUrl}/auth/check-user`, {
             credentials: 'include',
         })
         const data = await res.json();

@@ -1,8 +1,8 @@
 .contact__container.container{
     width: 58%;
     display: grid;
-    grid-template-columns: 30% 58%;
-    gap: 12%;
+    grid-template-columns: 30% 30% 28%;
+    gap: 8%;
 }
 h1{
     text-align: center;
@@ -10,7 +10,7 @@ h1{
 @media screen and (max-width: 1024px) {
     .container.contact__container{
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 1rem;
     }
 }
 @media screen and (max-width: 600px) {
