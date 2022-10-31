@@ -18,7 +18,7 @@ export const Header = () => {
     }, []);
 
     const logOut = async () => {
-        const res = await fetch(`${apiUrl}`, {
+        const res = await fetch(`${apiUrl}/auth/logout`, {
             credentials: 'include',
         });
         const resJson = await res.json();
